@@ -1,19 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[55]:
-
-
 import os
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.utils import to_categorical
 import random
-
-
-# In[56]:
-
 
 random.seed(1618)
 np.random.seed(1618)
@@ -31,9 +24,6 @@ IMAGE_SIZE = 784
 #ALGORITHM = "guesser"
 ALGORITHM = "custom_net"
 #ALGORITHM = "tf_net"
-
-
-# In[57]:
 
 
 class NeuralNetwork_2Layer():
@@ -119,9 +109,6 @@ def buildANN():
     return model
 
 
-# In[58]:
-
-
 def getRawData():
     mnist = tf.keras.datasets.mnist
     (xTrain, yTrain), (xTest, yTest) = mnist.load_data()
@@ -130,9 +117,6 @@ def getRawData():
     print("Shape of xTest dataset: %s." % str(xTest.shape))
     print("Shape of yTest dataset: %s." % str(yTest.shape))
     return ((xTrain, yTrain), (xTest, yTest))
-
-
-# In[59]:
 
 
 def preprocessData(raw):
@@ -151,9 +135,6 @@ def preprocessData(raw):
     print("New shape of yTrain dataset: %s." % str(yTrainP.shape))
     print("New shape of yTest dataset: %s." % str(yTestP.shape))
     return ((xTrain, yTrainP), (xTest, yTestP))
-
-
-# In[60]:
 
 
 def trainModel(data):
@@ -176,9 +157,6 @@ def trainModel(data):
         raise ValueError("Algorithm not recognized.")
 
 
-# In[61]:
-
-
 def runModel(data, model):
     if ALGORITHM == "guesser":
         return guesserClassifier(data)
@@ -197,9 +175,6 @@ def runModel(data, model):
         return b
     else:
         raise ValueError("Algorithm not recognized.")
-
-
-# In[62]:
 
 
 def evalResults(data, preds):   #TODO: Add F1 score confusion matrix here.
@@ -255,15 +230,6 @@ def evalResults(data, preds):   #TODO: Add F1 score confusion matrix here.
     print("Classifier algorithm: %s" % ALGORITHM)
     print("Classifier accuracy: %f%%" % (accuracy * 100))
     print()
-
-
-# In[ ]:
-
-
-
-
-
-# In[63]:
 
 
 class NeuralNetwork_3Layer():
@@ -345,9 +311,6 @@ class NeuralNetwork_3Layer():
         return layer3
 
 
-# In[64]:
-
-
 def main():
     raw = getRawData()
     data = preprocessData(raw)
@@ -360,20 +323,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
